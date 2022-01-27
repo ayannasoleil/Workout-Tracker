@@ -1,0 +1,22 @@
+{
+    "workouts": [
+        {
+            "id": 1,
+            "day": "Monday",
+            "workout": "Leg Day",
+            "equipment": "Leg Press"
+        },
+        {
+            "id": 2,
+            "day": "Tuesday",
+            "workout category": "Arm Day",
+            "equipment": "Dumbbell"
+        },
+        {
+            "id": 3,
+            "day": "Wednesday",
+            "workout": "Abs Day",
+            "equipment": "Incline bench"
+        }
+    ]
+}
