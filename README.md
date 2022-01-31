@@ -11,6 +11,9 @@ This Single Page Application was built to display the working knowledge of HTML,
 # Features: 
 The Workout Tracker displays a workout list and allows the user to "generate" their daily workout plans as needed.
 
+# How To Use: 
+![generate](https://user-images.githubusercontent.com/91291878/151864532-bdd875bd-0e11-4063-9217-5e6efa7c5931.gif)
+
 # Requirements: 
 1. Workout Tracker app must contain HTML, CSS and Javascript frontend dev work that accesses data from a public API. The API is handled asynchronously and uses JSON as the communication format. 
 
