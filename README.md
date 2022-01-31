@@ -12,8 +12,12 @@ This Single Page Application was built to display the working knowledge of HTML,
 The Workout Tracker displays a workout list and allows the user to "generate" their daily workout plans as needed.
 
 # How To Use: 
-![DOMContentLoaded](https://user-images.githubusercontent.com/91291878/151864670-29a1e94b-f1a2-46db-90f9-1de99ce3d44c.gif)
+![DOMContentLoaded_Home_Page (1)](https://user-images.githubusercontent.com/91291878/151864808-d6a56172-8749-4c69-aafd-c176fdba7d5d.gif)
+
+
 ![List_Workouts](https://user-images.githubusercontent.com/91291878/151864673-16100ec0-82e4-498f-b2f0-d73c45e1031d.gif)
+
+
 ![generate](https://user-images.githubusercontent.com/91291878/151864532-bdd875bd-0e11-4063-9217-5e6efa7c5931.gif)
 
 # Requirements: 
