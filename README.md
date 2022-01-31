@@ -30,6 +30,9 @@ The Workout Tracker displays a workout list and allows the user to "generate" th
 
 3. The Workout Tracker app contains 3 seperate event listeners (DOMContentLoaded, click and submit).
 
+# Blog Post: 
+https://medium.com/@ayannathomas.work/workout-tracker-utilizing-event-listeners-in-javascript-d6333b84399c
+
 # Stack Used:
 1. HTML
 2. CSS
