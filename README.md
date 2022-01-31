@@ -10,6 +10,9 @@ This Single Page Application was built to display the working knowledge of HTML,
 
 # Features: 
 The Workout Tracker displays a workout list and allows the user to "generate" their daily workout plans as needed.
+1. DOMContentLoaded Event Listener
+2. Click Event Listener
+3. Submit Event Listener
 
 # How To Use: 
 ![DOMContentLoaded_Home_Page (1)](https://user-images.githubusercontent.com/91291878/151864808-d6a56172-8749-4c69-aafd-c176fdba7d5d.gif)
