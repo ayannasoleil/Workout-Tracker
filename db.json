@@ -1,22 +1,58 @@
 {
-    "workouts": [
-        {
-            "id": 1,
-            "day": "Monday",
-            "workout": "Leg Day",
-            "equipment": "Leg Press"
-        },
-        {
-            "id": 2,
-            "day": "Tuesday",
-            "workout category": "Arm Day",
-            "equipment": "Dumbbell"
-        },
-        {
-            "id": 3,
-            "day": "Wednesday",
-            "workout": "Abs Day",
-            "equipment": "Incline bench"
-        }
-    ]
+  "workouts": [
+    {
+      "id": 1,
+      "day": "Monday",
+      "workout": "Leg Day",
+      "equipment": "Leg Press"
+    },
+    {
+      "day": "Tuesday",
+      "workout": "Arms",
+      "equipment": "Bench Press",
+      "id": 2
+    },
+    {
+      "day": "Wednesday",
+      "workout": "Leg Day",
+      "equipment": "Leg Press",
+      "id": 3
+    },
+    {
+      "day": "Thursday",
+      "workout": "Abs",
+      "equipment": "Gym Mat",
+      "id": 4
+    },
+    {
+      "day": "Friday",
+      "workout": "Arms",
+      "equipment": "Barbell",
+      "id": 5
+    },
+    {
+      "day": "Monday",
+      "workout": "Arms",
+      "equipment": "Barbell",
+      "id": 6
+    },
+    {
+      "day": "Monday",
+      "workout": "Arms",
+      "equipment": "Barbell",
+      "id": 7
+    },
+    {
+      "day": "Monday",
+      "workout": "Legs",
+      "equipment": "Bench Press",
+      "id": 8
+    },
+    {
+      "day": "Tuesday",
+      "workout": "Abs",
+      "equipment": "Gym Mat",
+      "id": 9
+    }
+  ]
 }

@@ -11,7 +11,7 @@
     z-index: 999;
 }
 
-#home-page-link {
+#home-page {
     background-color: #004643;
     background-size: 100%;
     -webkit-background-clip: text;
@@ -25,14 +25,18 @@
     font-size: 2rem;
 }
 
+.container {
+    background: #abd1c6;
+}
+
 /* Hero */
 
-.hero {
+.home {
     background: #abd1c6;
     padding: 200px 0;
 }
 
-.hero__container {
+.home__container {
     display: flex;
     flex-direction: column;
     justify-content: center;

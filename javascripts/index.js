@@ -1,111 +1,191 @@
-/** Questions regarding Features Usages
-//explain the full feature
-//use 3 question rule
-
-* when can I use this event? at anytime, when the page gets loaded (domcontentloaded) 
-* how will I interact with this event? user will click on button (click)
-* what will happen? what's the effect? (displays)
-
-* bonus -- add submit page or comments
-
-**/
-
 /** Globals **/
 
-const baseUrl = 'http://localhost:3000';
 let workouts = [];
+
+/** DOM loads **/
+
+document.addEventListener('DOMContentLoaded', () => {
+    // renderHomePage();
+    homePageLoadEvent();
+    workoutListLoadEvent();
+    workoutFormLoadEvent();
+})
+
+/*************************/
 
 /** NODES **/
 
 const mainDiv = () => document.getElementById('main');
-const homePageLink = () => document.getElementById('home-page-link');
-const workoutListLink = () => document.getElementById('workout-list-link');
-// const workoutFormLink = () => document.getElementById('workout-form-link');
+const homePageLoad = () => document.getElementById('home-page');
+const workoutListLoad = () => document.getElementById('workout-list');
+const workoutFormLoad = () => document.getElementById('workout-form');
 
 /*******************/
 
-// const dayInput = () => document.getElementById('day');
-// const workoutInput = () => document.getElementById('workout');
-// const equiptmentInput = () => document.getElementById('equiptment');
-// const mealInput = () => document.getElementById('meal');
+const dayInput = () => document.getElementById('day');
+const workoutInput = () => document.getElementById('workout');
+const equipmentInput = () => document.getElementById('equipment');
 
-/** Templates **/
-
-const homePageTemp = () => {
-    return `<h1 class="center-align">Workout Planner</h1>`
-}
-
-const workoutListTemp = () => {
-    return `<h1>Workout List</h1>
-    <table class="highlight">
-        <thead>
-            <tr>
-                <th>Day</th>
-                <th>Workout</th>
-                <th>Equipment</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            ${ renderWorkouts() }
-        </tbody>
-    </table>`
-}
+/** Template **/
 
 const workoutTemp = (workout) => {
-    return 
-    `<tr>
-    <td>${ workout.day }</td>
-    <td>${ workout.workout }</td>
-    <td>${ workout.equipment }</td>
-</tr>`
-}
-
-/** Renderers **/
-
-const renderHomePage = () => {
-    mainDiv().innerHTML = homePageTemp();
-}
-
-const renderWorkoutListPage = () => {
-    mainDiv().innerHTML = workoutListTemp();
-}
-
-const renderWorkouts = () => {
-    return workouts.map(workout => workoutTemp(workout));
+    const tr = document.createElement('tr');
+    const tdDay = document.createElement('td');
+    const tdWorkout = document.createElement('td');
+    const tdEquipment = document.createElement('td');
+    tdDay.innerText = workout.day;
+    tdWorkout.innerText = workout.workout;
+    tdEquipment.innerText = workout.equipment;
+    tr.appendChild(tdDay)
+    tr.appendChild(tdWorkout)
+    tr.appendChild(tdEquipment);
+    return tr;
 }
 
 /** Events **/
 
 const loadWorkouts = async () => {
-    const resp = await fetch(baseUrl + '/workouts')
+    const resp = await fetch('http://localhost:3000/workouts')
     const data = await resp.json();
     workouts = data;
     }
 
-
-const homePageLinkEvent = () => {
-    homePageLink().addEventListener('click', (e) => {
+const homePageLoadEvent = () => {
+    homePageLoad().addEventListener('click', (e) => {
         e.preventDefault();
         renderHomePage();
     })
 }
 
-const workoutListLinkEvent = () =>  {
-    workoutListLink().addEventListener('click', (e) => {
+const workoutListLoadEvent = () =>  {
+    workoutListLoad().addEventListener('click', (e) => {
         e.preventDefault();
-        loadWorkouts();
+       
         renderWorkoutListPage();
     })
 
-/***********************/
+}
 
+const workoutFormLoadEvent = () => {
+    workoutFormLoad().addEventListener('click', (e) => {
+        e.preventDefault();
+        renderWorkoutForm();
+    })
+}
 
-/** DOM loads **/
+const submitFormEvent = e => {
+    alert('submitted');
+    e.preventDefault();
+  fetch('http://localhost:3000/workouts', {
+      method: "POST",
+      headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+          day: dayInput().value, 
+          workout: workoutInput().value, 
+          equipment: equipmentInput().value, 
+      })
+  })
+  .then(resp => resp.json())
+  .then(workout => {
+    renderWorkoutListPage();
+  })
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderHomePage();
-    homePageLinkEvent();
-    workoutListLinkEvent();
-})
+}
+
+/** Renderers **/
+
+const renderHomePage = () => {
+    mainDiv().innerHTML = ''
+    const h1 = document.createElement('h1');
+    h1.classList.add('center-align');
+    h1.innerText = 'Workout Tracker'
+    mainDiv().appendChild(h1);
+}
+
+const renderWorkoutListPage = async () => {
+    await loadWorkouts();
+    mainDiv().innerHTML = '';
+    const h1 = document.createElement('h1');
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tr = document.createElement('tr');
+    const thDay = document.createElement('th');
+    const thWorkout = document.createElement('th');
+    const thEquipment = document.createElement('th');
+    const tbody = document.createElement('tbody');
+    h1.innerText = 'Tracked Workouts';
+    thDay.innerText = 'Day';
+    thWorkout.innerText = 'Workout';
+    thEquipment.innerText = 'Equipment';
+    table.classList.add('highlight');
+    tr.appendChild(thDay);
+    tr.appendChild(thWorkout);
+    tr.appendChild(thEquipment);
+    thead.appendChild(tr);
+    table.appendChild(thead);
+    workouts.map(workouts => tbody.appendChild(workoutTemp(workouts)));
+    table.appendChild(tbody);
+    mainDiv().appendChild(h1);
+    mainDiv().appendChild(table);
+}
+
+const renderWorkoutForm = () => {
+    const h1 = document.createElement('h1');
+    const form = document.createElement('form');
+    const dayDiv = document.createElement('div');
+    const dayInput = document.createElement('input');
+    const dayLabel = document.createElement('label');
+    const workoutDiv = document.createElement('div');
+    const workoutInput = document.createElement('input');
+    const workoutLabel = document.createElement('label');
+    const equipmentDiv = document.createElement('div');
+    const equipmentInput = document.createElement('input');
+    const equipmentLabel = document.createElement('label');
+    const submitButton = document.createElement('input');
+
+    h1.className = 'center-align';
+    dayDiv.className = 'input-field';
+    workoutDiv.className = 'input-field';
+    equipmentDiv.className = 'input-field';
+    submitButton.className = 'waves-effect waves-light btn';
+
+    dayInput.setAttribute('id', 'day');
+    dayInput.setAttribute('type', 'text');
+    dayLabel.setAttribute('for', 'day');
+    workoutInput.setAttribute('id', 'workout');
+    workoutInput.setAttribute('type', 'text');
+    workoutLabel.setAttribute('for', 'workout');
+    equipmentInput.setAttribute('id', 'equipment');
+    equipmentInput.setAttribute('type', 'text');
+    equipmentLabel.setAttribute('for', 'equipment');
+    submitButton.setAttribute('type', 'submit');
+    submitButton.setAttribute('value', 'Create Workout');
+  
+    h1.innerText = 'Create Workout';
+    dayLabel.innerText = 'Day'
+    workoutLabel.innerText = 'Workout'
+    equipmentLabel.innerText = 'Equipment'
+    
+  
+    dayDiv.appendChild(dayInput);
+    dayDiv.appendChild(dayLabel);
+    workoutDiv.appendChild(workoutInput);
+    workoutDiv.appendChild(workoutLabel);
+    equipmentDiv.appendChild(equipmentInput);
+    equipmentDiv.appendChild(equipmentLabel);
+    
+  
+  
+    form.appendChild(dayDiv);
+    form.appendChild(workoutDiv);
+    form.appendChild(equipmentDiv);
+    form.appendChild(submitButton);
+  
+    form.addEventListener('submit', submitFormEvent);
+  
+    mainDiv().appendChild(h1);
+    mainDiv().appendChild(form);
 }
